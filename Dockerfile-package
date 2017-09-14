@@ -1,0 +1,9 @@
+FROM java
+
+LABEL maintainer "kimi"
+
+COPY /project/target/hello-0.0.1-SNAPSHOT.jar /home/admin/hello/target/hello-0.0.1-SNAPSHOT.jar
+
+WORKDIR /home/admin
+
+ENTRYPOINT java -jar /home/admin/hello/target/hello-0.0.1-SNAPSHOT.jar
