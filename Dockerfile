@@ -5,7 +5,7 @@ LABEL maintainer "kimi"
 WORKDIR .
 RUN mkdir -p /home/admin/build/
 COPY . /home/admin/build/
-RUN mvn clean package -Dmaven.test.skip && \
+RUN mvn clean package -Dmaven.test.skip -f /home/admin/build/pom.xml && \
     mkdir -p /home/admin/hello/target && \
     cp /home/admin/build/target/hello-0.0.1-SNAPSHOT.jar /home/admin/hello/target/hello.jar
 
