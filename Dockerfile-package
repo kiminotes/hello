@@ -1,9 +1,9 @@
-FROM java
+FROM maven:3.5.0-jdk-8-alpine
 
-LABEL maintainer "kimi"
+LABEL maintainer "misha"
 
-COPY /project/target/hello-0.0.1-SNAPSHOT.jar /home/admin/hello/target/hello-0.0.1-SNAPSHOT.jar
+WORKDIR /project
+ADD . /project
 
-WORKDIR /home/admin
-
-ENTRYPOINT java -jar /home/admin/hello/target/hello-0.0.1-SNAPSHOT.jar
+RUN mvn package -Dmaven.test.skip=true
+CMD ["mvn"]
